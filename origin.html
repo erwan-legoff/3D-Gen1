@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js 3D app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js/three.js"></script>
+    <script>
+      const scene = new THREE.Scene()
+      //  On crée une caméra avec les paramètres suivants :
+      //  - fov : champ de vision en degrés
+      //  - aspect : ratio largeur/hauteur du canvas
+      //  - near : distance minimale de rendu
+      //  - far : distance maximale de rendu
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      )
+
+      const renderer = new THREE.WebGLRenderer()
+      // On choisit la résolution du rendu
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      document.body.appendChild(renderer.domElement)
+			
+    </script>
+  </body>
+</html>

@@ -13,11 +13,6 @@
     <script src="js/three.js"></script>
     <script>
       const scene = new THREE.Scene()
-      //  On crée une caméra avec les paramètres suivants :
-      //  - fov : champ de vision en degrés
-      //  - aspect : ratio largeur/hauteur du canvas
-      //  - near : distance minimale de rendu
-      //  - far : distance maximale de rendu
       const camera = new THREE.PerspectiveCamera(
         75,
         window.innerWidth / window.innerHeight,
@@ -26,14 +21,9 @@
       )
 
       const renderer = new THREE.WebGLRenderer()
-      // On choisit la résolution du rendu
-      // Pour une résolution inférieure à la résolution du canvas, il faut
-      // ajouter un deuxième paramètre à setSize() : false
       renderer.setSize(window.innerWidth, window.innerHeight)
-      // On ajoute le rendu au DOM pour l'afficher
       document.body.appendChild(renderer.domElement)
 
-      // On crée un cube
       const geometry = new THREE.BoxGeometry(1, 1, 1)
       const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
       const cube = new THREE.Mesh(geometry, material)
@@ -41,11 +31,15 @@
 
       camera.position.z = 5
 
-      // Pour faire un rendu, il faut appeler la méthode render() du renderer
       function animate() {
         requestAnimationFrame(animate)
+
+        cube.rotation.x += 0.01
+        cube.rotation.y += 0.01
+
         renderer.render(scene, camera)
       }
+
       animate()
     </script>
   </body>

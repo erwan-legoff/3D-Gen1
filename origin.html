@@ -27,9 +27,26 @@
 
       const renderer = new THREE.WebGLRenderer()
       // On choisit la résolution du rendu
+      // Pour une résolution inférieure à la résolution du canvas, il faut
+      // ajouter un deuxième paramètre à setSize() : false
       renderer.setSize(window.innerWidth, window.innerHeight)
+      // On ajoute le rendu au DOM pour l'afficher
       document.body.appendChild(renderer.domElement)
-			
+
+      // On crée un cube
+      const geometry = new THREE.BoxGeometry(1, 1, 1)
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+      const cube = new THREE.Mesh(geometry, material)
+      scene.add(cube)
+
+      camera.position.z = 5
+
+      // Pour faire un rendu, il faut appeler la méthode render() du renderer
+      function animate() {
+        requestAnimationFrame(animate)
+        renderer.render(scene, camera)
+      }
+      animate()
     </script>
   </body>
 </html>
